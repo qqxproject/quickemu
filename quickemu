@@ -1018,7 +1018,7 @@ function configure_display() {
             AUDIO_DRIVER="pipewire"
         fi
     elif ! pidof pulseaudio >/dev/null 2>&1; then
-      AUDIO_DRIVER="alsa"
+        AUDIO_DRIVER="alsa"
     fi
 
     # Setup the appropriate audio device based on the display output
