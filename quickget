@@ -3375,7 +3375,7 @@ function download_windows_workstation() {
     }
 
     # Copyright (C) 2024 GPL3 Alex Genovese
-    # https://github.com/TuxVinyards/qqX
+    # https://github.com/qqxproject/qqX
     # Slow down the 'bot' behaviour, make it seem more human, so the anti-ddos routines don't block us:
     local RndNum=
     RndNum="$( (tr -cd '5-8' | head -c 1) < /dev/urandom )"
@@ -3786,7 +3786,7 @@ case "${1}" in
     --version|-version)
         #WHERE=$(dirname "${BASH_SOURCE[0]}")
         #"${WHERE}/quickemu" --version
-        echo "FS 4.9.8.06"
+        echo "FS 4.9.8.07"
         exit 0;;
     --help|-help|--h|-h)
         help_message
