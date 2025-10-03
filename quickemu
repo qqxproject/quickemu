@@ -1980,7 +1980,7 @@ function monitor_send_cmd {
 
     case "${monitor}" in
         socket)
-            echo -e " - Sending:  via socket ${MSG}"
+            echo -e " - Sending:  via socket ${MSG} $LOOP"
             echo -e "${MSG}" | socat -,shut-down unix-connect:"${SOCKET_MONITOR}" > /dev/null 2>&1;;
         telnet)
             echo -e " - Sending:  via telnet ${MSG}"
@@ -2059,7 +2059,7 @@ VMPATH=""
 # shellcheck disable=SC2155
 readonly LAUNCHER=$(basename "${0}")
 readonly DISK_MIN_SIZE=$((197632 * 8))
-readonly VERSION="FS 4.9.8.07"
+readonly VERSION="FS 4.9.8.08"
 
 # TODO: Make this run the native architecture binary
 ARCH_VM="x86_64"
@@ -2330,9 +2330,8 @@ fileshare_param_check
 if [ -z "${VM_PID}" ]; then
     vm_boot
     start_viewer
-    # If the VM being started is an uninstalled Windows VM then auto-skip the press-any key prompt.
-    if [ -n "${iso}" ] && [[ "${guest_os}" == "windows"* ]]; then
-        # shellcheck disable=SC2034
+    if [ -n "${iso}" ] && [[ "$guest_os" == windows* ]]; then
+        echo " - Sending:  keys for the 'CD ROM'"
         for LOOP in {1..5}; do
           sleep 1
           monitor_send_cmd "sendkey ret"
