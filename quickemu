@@ -2,7 +2,7 @@
 
 # For qqX use with C.UTF-8 locale, not:  export LC_ALL=C
 # This section enables testing via './quickget --check distroname' from a terminal opened in the built-ins folder:
-if [[ -e "$(pwd)/qqX_quickget_mods" ]]; then
+if [[ -e "$(pwd)/qqX_quickGet_mods" ]]; then
     if [[ $(pgrep -aAi qqX 2>/dev/null) ]] ; then
         printf "\n  qqX running elsewhere ... \n\n" ; exit 1
     else
@@ -2082,7 +2082,7 @@ VMPATH=""
 # shellcheck disable=SC2155
 readonly LAUNCHER=$(basename "${0}")
 readonly DISK_MIN_SIZE=$((197632 * 8))
-readonly VERSION="FS 4.9.8.08"
+readonly VERSION="FS 4.9.8.09"
 
 # TODO: Make this run the native architecture binary
 ARCH_VM="x86_64"
