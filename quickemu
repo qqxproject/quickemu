@@ -955,13 +955,15 @@ function configure_storage() {
         if ! ${QEMU_IMG} create -q -f "${disk_format}" -o "${create_options=}" "${disk_img}" "${disk_size}"; then
             echo "ERROR! Failed to create ${disk_img} using ${disk_format} format."
             exit 1
+        else
+            DU_Size="$(du -h "${disk_img}" | cut -f 1  2>/dev/null)"
+            echo "             Created Current Size: $DU_Size   Max Size: ${disk_size}"
         fi
 
         if [ -z "${iso}" ] && [ -z "${img}" ]; then
             echo "ERROR! You haven't specified a .iso or .img image to boot from."
             exit 1
         fi
-        echo "             Just created, booting from ${iso}${img}"
         DISK_USED="no"
     elif [ -e "${disk_img}" ]; then
         # If the VM is not running, check for disk related issues.
