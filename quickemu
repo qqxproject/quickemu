@@ -2108,7 +2108,7 @@ function vm_boot() {
                 args+=(-drive media=cdrom,index=2,file="${VMDIR}/unattended.iso")
             else
                 echo; echo "ERROR!  Windows download incomplete:"
-                echo "Required ISO files 'virtio-win.iso' and 'unattended.iso' not found."
+                echo "Required ISO files 'virtio-win.iso' and/or 'unattended.iso' not found."
                 exit 1
             fi
         else
